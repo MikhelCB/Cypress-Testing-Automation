@@ -42,5 +42,6 @@ describe('Aprendendo conceitos Cypress', () => {
 
   it('6 - GET Produtos - usando resquest', () => {
     cy.request('GET', 'api/productsList')
+    //comment for test
   })
 })
