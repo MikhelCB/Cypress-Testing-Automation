@@ -156,8 +156,21 @@ describe('Realizando o registro de usuário e a deleção da conta', () => {
     //clicando no botão de Continue
     cy.get('[data-qa="continue-button"]').should('be.visible').click();
 
-    //Validando e deletando conta
-    cy.get('[class="fa fa-user"]').contains('Logged in as Mikhel');
+    //Verificando se realmente está logado na minha conta, e deleta a minha conta
+    cy.get('[class="shop-menu pull-right"]')
+      .contains('Logged in as Mikhel')
+      .should('be.visible');
+
+    cy.get('[class="shop-menu pull-right"]')
+      .contains('Delete Account')
+      .should('be.visible')
+      .click();
+
+    // Validando Accounte Deleted
+    cy.get('[data-qa="account-deleted"]').contains('Account Deleted!');
+
+    //Clicando no botão de continue
+    cy.get('[data-qa="continue-button"]').contains('Continue').click();
   });
 });
 
