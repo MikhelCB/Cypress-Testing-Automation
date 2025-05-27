@@ -1,4 +1,4 @@
-describe("Verificando assinatura da página", () => {
+describe("Verificando inscrição na página home", () => {
   beforeEach(() => {
     cy.visit("https://www.automationexercise.com");
   });
@@ -8,9 +8,13 @@ describe("Verificando assinatura da página", () => {
       .contains("Automation")
       .should("be.visible"); // Verificando h1 Automation
 
-    cy.get(".searchform").scrollIntoView(); //Rolando o scroll até o campo de inserção do e-mail
+    cy.get(".shop-menu")
+      .contains("Cart")
+      .should("be.visible")
+      .and("to.have", "class", "fa fa-shopping-cart")
+      .click(); //Clicando e verificando o botão de carrinho
 
-    cy.get(".single-widget").contains("Subscription").should("be.visible"); //Verificando se esta na parte de assinatura
+    cy.get(".searchform").scrollIntoView(); //Rolando o scroll até o campo de inserção do e-mail
 
     cy.get("input")
       .eq(1)
